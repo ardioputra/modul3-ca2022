@@ -4,7 +4,7 @@
     "description": "Modul 3 untuk Study Group CPS Laboratory Tel-U membahas Web Development",
     "main": "index.js",
     "scripts": {
-        "start": "node index.js",
+        "start": "concurrently --kill-others \"node index.js\" \"node antares-dummy-test.js\"",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
@@ -18,7 +18,11 @@
     },
     "homepage": "https://github.com/ardioputra/sg2022_modul3_cpsltelu#readme",
     "dependencies": {
+        "antares-http": "^1.0.4",
         "express": "^4.17.2",
         "path": "^0.12.7"
+    },
+    "devDependencies": {
+        "concurrently": "^7.6.0"
     }
 }

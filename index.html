@@ -10,10 +10,38 @@
     <link rel="manifest" href="src/site.webmanifest">
     <script src="/script.js"></script>
     <script src="https://kit.fontawesome.com/90d77b2020.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="jquery/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <title>MODUL 3</title>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            setInterval(function() {
+                $.ajax({
+                    url: 'https://web-production-9ec8.up.railway.app/https://platform.antares.id:8443/~/antares-cse/antares-id/modul3cps/modul3cps/la',
+                    method: 'GET',
+                    headers: {
+                        'X-M2M-Origin': '664904e50c041393:39f9b77b24cfb7b1',
+                        'Content-Type': 'application/json;ty=4',
+                        'Accept': 'application/json'
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        data = JSON.parse(response["m2m:cin"].con);
+                        console.log(data);
+                        $("#temp").text(data.temperature); //sesuaikan variabel dengan antares
+                        $("#humi").text(data.humidity); //sesuaikan variabel dengan antares
+                    },
+                    error: function(data) {
+                        $("#temp").text("NaN"); //sesuaikan variabel dengan antares
+                        $("#humi").text("NaN"); //sesuaikan variabel dengan antares
+                    }
+                });
+            }, 1000)
+        });
+    </script>
 </head>
 
 <body>
@@ -57,7 +85,41 @@
                     </li>
                 </ul>
             </div>
+
+            <div class="card">
+                <div class="content">
+                    <div class="image"><img src="/src/itf.png"><img class="img-top" src="/src/itf-bebas.png"></div>
+                    <div class="contents">
+                        <h3>Ikram Tauffiqul H<br><span>ITF</span></h3>
+                    </div>
+                </div>
+                <ul class="sci">
+                    <li style="--i:1">
+                        <a href="https://github.com/arcfoz"><i class="fab fa-github"></i></a>
+                    </li>
+                    <li style="--i:2">
+                        <a href="https://instagram.com/ikramtfqh"><i class="fab fa-instagram"></i></a>
+                    </li>
+                    <li style="--i:3">
+                        <a href="#"><i class="fab fa-facebook"></i></i></a>
+                    </li>
+                </ul>
+            </div>
         </div>
+
+        <div class="containswitch">
+            <div class="switch">
+                <h3 id="data-temp">Tem:<span id="temp">null</span></h3>
+            </div>
+        </div>
+
+
+        <div class="containswitch">
+            <div class="switch">
+                <h3 id="data-humi">Hum:<span id="humi">null</span></h3>
+            </div>
+        </div>
+
         <div class="containswitch">
             <div class="switch">
                 <h3 id="button" onclick="switchtheme()">Light</h3>
