@@ -4,7 +4,7 @@
     "description": "Modul 3 untuk Study Group CPS Laboratory Tel-U membahas Web Development",
     "main": "index.js",
     "scripts": {
-        "start": "concurrently --kill-others \"node index.js\" \"node antares-dummy-test.js\"",
+        "start": "node index.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
